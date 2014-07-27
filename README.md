@@ -7,14 +7,13 @@ Installation
 Screenshoot
 ===========
 This is my non-style data output :
-(http://i.imgur.com/Z8enpqj.png "None-style")
+![alt text](http://i.imgur.com/Z8enpqj.png "None-style")
 
 After :
-(http://i.imgur.com/vKykF3t.png "Styled")
+![alt text](http://i.imgur.com/vKykF3t.png "Styled")
 
 More :
-
-(http://i.imgur.com/JThu0kg.png "More")
+![alt text](http://i.imgur.com/JThu0kg.png "More")
 
 
 ```javascript
