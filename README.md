@@ -1,7 +1,7 @@
 A simple view for a output data
 Installation
 ============
-- Define a function called <code>debug</code> like <a href="https://github.com/huudai09/debugger/blob/master/debug.php">this</a> or whatever you want:
+- Define a function called <code>debug</code> like this or whatever you want:
 ```php
 	function debug(){		
 		$debug = uniqid();
