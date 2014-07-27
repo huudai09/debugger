@@ -1,7 +1,32 @@
 A simple view for a output data
 Installation
 ============
-- Define a function called <code>debug</code> like <a href="https://github.com/huudai09/debugger/blob/master/debug.php">this</a>
+- Define a function called <code>debug</code> like <a href="https://github.com/huudai09/debugger/blob/master/debug.php">this</a>:
+```php
+	function debug(){		
+		$debug = uniqid();
+		echo '<meta charset="utf8">';
+		echo '<pre id="'. $debug .'" style="display: none;">';		
+		var_dump(func_get_args());
+		echo '</pre>';
+		echo "<script >var de = document.getElementById('$debug');</script>";
+		echo "<script src='debugmode.js'></script>";
+		die();
+	}
+
+	// for notype output
+	function debugNT(){		
+		$debug = uniqid();
+		echo '<meta charset="utf8">';
+		// set `notype` attribute to <pre>
+		echo '<pre id="'. $debug .'" style="display: none;" notype>';		
+		var_dump(func_get_args());
+		echo '</pre>';
+		echo "<script >var de = document.getElementById('$debug');</script>";
+		echo "<script src='debugmode.js'></script>";
+		die();
+	}  
+```
 - Include <code>debugmode.js</code> file to your project
 
 Screenshoot
