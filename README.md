@@ -1,7 +1,7 @@
 A simple view for a output data
 Installation
 ============
-- Define a function called <code>debug</code> like <a href="https://github.com/huudai09/debugger/blob/master/debug.php">this</a>:
+- Define a function called <code>debug</code> like <a href="https://github.com/huudai09/debugger/blob/master/debug.php">this</a> or whatever you want:
 ```php
 	function debug(){		
 		$debug = uniqid();
@@ -10,7 +10,7 @@ Installation
 		var_dump(func_get_args());
 		echo '</pre>';
 		echo "<script >var de = document.getElementById('$debug');</script>";
-		echo "<script src='debugmode.js'></script>";
+		echo "<script src='path/to/debugmode.js'></script>";
 		die();
 	}
 
@@ -23,7 +23,7 @@ Installation
 		var_dump(func_get_args());
 		echo '</pre>';
 		echo "<script >var de = document.getElementById('$debug');</script>";
-		echo "<script src='debugmode.js'></script>";
+		echo "<script src='path/to/debugmode.js'></script>";
 		die();
 	}  
 ```
