@@ -31,14 +31,14 @@ Installation
 
 Screenshoot
 ===========
-This is my non-style data output :
+- This is my non-style data output :
 
 ![alt text](http://i.imgur.com/Z8enpqj.png "None-style")
 
-After :
+- After :
 
 ![alt text](http://i.imgur.com/vKykF3t.png "Styled")
 
-More :
+- More :
 
 ![alt text](http://i.imgur.com/JThu0kg.png "More")
