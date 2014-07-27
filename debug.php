@@ -11,9 +11,11 @@
 		die();
 	}
 
+	// for notype output
 	function debugNT(){		
 		$debug = uniqid();
 		echo '<meta charset="utf8">';
+		// set `notype` attribute to <pre>
 		echo '<pre id="'. $debug .'" style="display: none;" notype>';		
 		var_dump(func_get_args());
 		echo '</pre>';
