@@ -8,3 +8,16 @@
 
 <h2><a href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
+<div class="highlight highlight-go">
+   var sum int
+
+  fn := func(i int) {
+    sum += i
+  }
+
+  i := []int{1, 2, 3, 4, 5}
+  EachInt(i, fn)
+
+  fmt.Printf("%#v\n", sum) //15
+</div>
+
