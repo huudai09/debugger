@@ -100,14 +100,40 @@
 	};
 	
 	Debug.prototype.log = function(){
-	var text = this.text
+	var log = [],
+	    logtext = '',
+	    patt = {
+				type: [['array', 'string', 'bool', 'float', 'int'], 'color: #4796B8'],
+				square: [['{', '}'], 'color: red'],
+				so: [['=>'], 'color: #A5A5A5']
+			  }
+	    text = this.text
 				 .replace(/=>((\s)+)/gm, ' => ')
-				 // .split(/(\[.*)/gm)
-				 // .forEach(function(el){
-					// console.log(el);
-				 // });
+				 .split(/(array|bool|string|int|float|{|}|=>)/)
+				 .forEach(function(el){
 				 
-		console.log(text);
+					if(/^\s*$/.test(el)){
+						logtext += el;							
+						return;
+					}											
+						
+					for(var x in patt){
+						if(!!~patt[x][0].indexOf(el)){							
+							logtext += '%c'+el;
+							log.push(patt[x][1]);						
+							return;
+						}						
+					}
+					
+					logtext += '%c' + el;
+					log.push('color:#222');						
+					
+				 });				
+				 
+		log.unshift(logtext);
+		
+		console.log.apply(console, log);
+		
 		return this;
 	};
 
