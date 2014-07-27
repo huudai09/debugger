@@ -134,7 +134,7 @@
 		css += ".de-total{color: #A9A9A9; font-weight: normal; font-size: 11px;}";
 		css += ".de-total:not(.array):not(.string){color: #37C310; font-size: 13px;}";
 		css += ".de-child{border-left: 1px solid rgb(234, 234, 234); padding-left: 0px; line-height: 5px;  margin:0;}";
-		css += ".de-elem{line-height: 15px; text-indent: 10px; color: #777;}";
+		css += ".de-elem{line-height: 15px; text-indent: 10px; color: #222;}";
 		css += ".de-inner{display: inline-table; color: red;}";		
 		css += ".de-null{color: #7100FF;}";		
 		css += ".de-hover.de-inner{position: relative;}";
