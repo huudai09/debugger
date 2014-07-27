@@ -1,5 +1,6 @@
 ;(function(){	
 	var 
+	// S method
 	S = function(el){							
 		return {
 			element: el,
