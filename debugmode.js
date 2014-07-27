@@ -136,7 +136,8 @@
 		
 		return this;
 	};
-
+	
+	// filter
 	Debug.prototype.filter = function(patt, len, index){
 		
 		if(len < 0 || index >= len)
