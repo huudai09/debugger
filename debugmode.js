@@ -169,9 +169,12 @@
 		css += ".de-inner{display: inline-table; color: red;}";		
 		css += ".de-null{color: #7100FF;}";		
 		css += ".de-hover.de-inner{position: relative;}";
-		css += ".de-hover.de-inner:hover > .de-child{position: absolute;top: 15px;left: 10px;background: #FFF; padding: 3px;box-shadow: 0px 0px 12px rgba(0,0,0,.1);border: 1px solid rgb(223, 223, 223);display: block !important; z-index:1;}";
+		css += ".de-child:after{position: absolute;top: -14px;left: 8px;content: '';width: 0px;height: 0px;border-top: 7px solid transparent;border-left: 7px solid transparent;border-right: 7px solid transparent;border-bottom: 7px solid white;z-index: 10;}";
+		css += ".de-child:before{position: absolute;top: -16px;left: 7px;content: '';width: 0px;height: 0px;border-top: 8px solid transparent;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 8px solid #DFDFDF;z-index: 9;}";
 		
-		this.elem.classList.add('de-box');
+		css += ".de-hover.de-inner:hover > .de-child{position: absolute;top: 23px;left: 10px;background: #FFF; padding: 3px;border: 1px solid rgb(223, 223, 223);display: block !important; z-index:1;}";
+		
+		this.elem.classList.add('de-box');		
 		
 		style.appendChild(document.createTextNode(css));
 		
