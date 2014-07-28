@@ -69,7 +69,9 @@
 		 ) 
 		 
 		&& (function(){		
-		
+		if(!this.getElementsByClassName('de-inner')[0])
+			return;
+			
 		 var innerNode = this.getElementsByClassName('de-inner')[0],
 		     textNode = innerNode.childNodes[2],
 			deChild = S(this.getElementsByClassName('de-child')[0]);
@@ -106,11 +108,12 @@
 	    patt = {
 				type: [['array', 'string', 'bool', 'float', 'int'], 'color: #4796B8'],
 				square: [['{', '}'], 'color: red'],
+				spec_var: [['NULL', 'true', 'false'], 'color: blue'],
 				so: [['=>'], 'color: #A5A5A5']
 			  }
 	    text = this.text
 				 .replace(/=>((\s)+)/gm, ' => ')
-				 .split(/(array|bool|string|int|float|{|}|=>)/)
+				 .split(/(array|bool|string|int|float|{|}|=>|NULL|true|false)/)
 				 .forEach(function(el){
 				 
 					if(/^\s*$/.test(el)){
