@@ -168,6 +168,7 @@
 		css += ".de-inner{display: inline-table; color: red;}";		
 		css += ".de-null{color: #7100FF;}";		
 		css += ".de-hover.de-inner{position: relative;}";
+		css += ".de-inner.de-hover:after{position: absolute;top: 3px;left: 10px;height:  20px;width: 300px;background: transparent;content: '';}";
 		css += ".de-child:after{position: absolute;top: -14px;left: 8px;content: '';width: 0px;height: 0px;border-top: 7px solid transparent;border-left: 7px solid transparent;border-right: 7px solid transparent;border-bottom: 7px solid white;z-index: 10;}";
 		css += ".de-child:before{position: absolute;top: -16px;left: 7px;content: '';width: 0px;height: 0px;border-top: 8px solid transparent;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 8px solid #DFDFDF;z-index: 9;}";
 		

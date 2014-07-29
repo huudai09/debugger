@@ -2,7 +2,29 @@
 
 include 'debug.php';
 	
-	debug($a, '1', pow(9999, 1000), '3', 5, true, false, array(
+	class A
+	{
+		public $var1;
+		public $var2;
+
+		public static function __set_state($an_array)
+		{
+			$obj = new A;
+			$obj->var1 = $an_array['var1'];
+			$obj->var2 = $an_array['var2'];
+			return $obj;
+		}
+		
+		public function doExecute(){
+			return $this->$var1;
+		}
+	}
+
+	$a = new A;
+	$a->var1 = 5;
+	$a->var2 = 'foo';
+	
+	debug($b, $a, '1', pow(9999, 1000), '3', 5, true, false, array(
 		'name' => 'Nguyễn Hữu Đại',
 		'age' => 45,
 		'level' => array(
