@@ -34,10 +34,7 @@
 				
 				style.cssText = cached_content.replace(patt[0], patt[1]);											
 				return this;				
-			},
-			toggleClass: function(){
-				
-			}			
+			}	
 		}
 	}, 
 	
@@ -63,11 +60,13 @@
 	Debug.prototype._delegate = function(ev){
 		var target = ev.target;			
 		
+		// if target is `de-elem` || has parent is || is `de-box`		
 		(S(target).hasClass('de-elem') 
 		 || S(target.parentNode).hasClass('de-elem')
 		 || S(target.parentNode).hasClass('de-box')
 		 ) 
-		 
+		
+		// then do that		
 		&& (function(){		
 		if(!this.getElementsByClassName('de-inner')[0])
 			return;
