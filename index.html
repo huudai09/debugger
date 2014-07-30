@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>FunnyDebug by huudai09</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>FunnyDebug</h1>
+        <h2>A better view for a output data</h2>
+        <a href="https://github.com/huudai09/funny-debug" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>A simple view for a output data</p>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<ul>
+<li>Define a function called <code>debug</code> like this or whatever you want:</li>
+</ul><div class="highlight highlight-php"><pre>    <span class="k">function</span> <span class="nf">debug</span><span class="p">(){</span>       
+        <span class="nv">$debug</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s1">'&lt;meta charset="utf8"&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">'&lt;pre id="'</span><span class="o">.</span> <span class="nv">$debug</span> <span class="o">.</span><span class="s1">'" style="display: none;"&gt;'</span><span class="p">;</span>      
+        <span class="nb">var_dump</span><span class="p">(</span><span class="nb">func_get_args</span><span class="p">());</span>
+        <span class="k">echo</span> <span class="s1">'&lt;/pre&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;script &gt;var de = document.getElementById('</span><span class="si">$debug</span><span class="s2">');&lt;/script&gt;"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;script src='path/to/debugmode.js'&gt;&lt;/script&gt;"</span><span class="p">;</span>
+        <span class="k">die</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// for notype output</span>
+    <span class="k">function</span> <span class="nf">debugNT</span><span class="p">(){</span>     
+        <span class="nv">$debug</span> <span class="o">=</span> <span class="nb">uniqid</span><span class="p">();</span>
+        <span class="k">echo</span> <span class="s1">'&lt;meta charset="utf8"&gt;'</span><span class="p">;</span>
+        <span class="c1">// set `notype` attribute to &lt;pre&gt;</span>
+        <span class="k">echo</span> <span class="s1">'&lt;pre id="'</span><span class="o">.</span> <span class="nv">$debug</span> <span class="o">.</span><span class="s1">'" style="display: none;" notype&gt;'</span><span class="p">;</span>       
+        <span class="nb">var_dump</span><span class="p">(</span><span class="nb">func_get_args</span><span class="p">());</span>
+        <span class="k">echo</span> <span class="s1">'&lt;/pre&gt;'</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;script &gt;var de = document.getElementById('</span><span class="si">$debug</span><span class="s2">');&lt;/script&gt;"</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"&lt;script src='path/to/debugmode.js'&gt;&lt;/script&gt;"</span><span class="p">;</span>
+        <span class="k">die</span><span class="p">();</span>
+    <span class="p">}</span>  
+</pre></div>
+
+<ul>
+<li>Include <code>debugmode.js</code> file to your project</li>
+</ul><h1>
+<a name="screenshoot" class="anchor" href="#screenshoot"><span class="octicon octicon-link"></span></a>Screenshoot</h1>
+
+<ul>
+<li>This is my non-style data output :</li>
+</ul><p><img src="http://i.imgur.com/Z8enpqj.png" alt="none style"></p>
+
+<ul>
+<li>After :</li>
+</ul><p><img src="http://i.imgur.com/vKykF3t.png" alt="none style"></p>
+
+<ul>
+<li>More :</li>
+</ul><p><img src="http://i.imgur.com/JThu0kg.png" alt="and more"></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/huudai09/funny-debug/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/huudai09/funny-debug/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/huudai09/funny-debug"></a> is maintained by <a href="https://github.com/huudai09">huudai09</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
