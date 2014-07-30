@@ -15,7 +15,7 @@
 			},
 			hasAttr: function(attr){				
 				return !!this.element.attributes.getNamedItem(attr)
-			},
+			},			
 			toggle: function(){
 				if(!el) return;	
 				var style = el.style, 
@@ -40,17 +40,19 @@
 	
 	Debug = function(el){				
 		this.elem = el.cloneNode(true);			
+		this.doc = el.ownerDocument;
 		this.notype = S(el).hasAttr('notype');
+		this.log = true;
 		this.text = el.innerText || el.textContent || '';
 		this.patt = [[/{/g, '<span class="de-parent"><span class="de-inner">{<ul class="de-child">'],
 				     [/}/g, '</ul>}</span></span>'],
 				     [/=>((\s)+)/gm, ' => '],
 				     [/NULL/gm, '<b class="de-null">NULL</b>'],
 				     [/(\[.*)/gm, '<li class="de-elem">$1</li>\n'],
-				     [/(array|int|double|float|string|bool|object)(\((.*)\))/g, (this.notype ? '' : '<i>$1</i>') + '(<b class="de-total $1">$3</b>)'],
+				     [/(array|int|double|float|string|bool|object)(\((.*)\))/g, (this.notype ? '' : '<i>$1</i>') + '(<b class="de-total $1">$3</b>)']
 					 ];		
 					 
-		this.log()
+		this.logging()
 		    .filter(this.patt, this.patt.length, 0)
 		    .set();					
 		this.addEvent(this.elem, 'click', this._delegate);		
@@ -96,48 +98,63 @@
 	   return element.addEventListener(evnt, funct, false);
 	}
 	
+	// Debug.prototype.setUtf8 = function(){
+		// // debugging
+		// return this;
+		
+		// if(!!document.head.getElementsByTagName('meta').length)
+			// return this;
+		// var meta = document.createElement('meta'), charset = document.createAttribute('charset');		    
+		    // charset.value = 'utf8';
+		    // meta.attributes.setNamedItem(charset);
+		// document.head.appendChild(meta);
+		// return this;
+	// };
+	
 	Debug.prototype.set = function(){			
 		this.elem.innerHTML = this.text;	
 		return this;
 	};
 	
-	Debug.prototype.log = function(){
-	var log = [],
-	    logtext = '',
-	    patt = {
-				type: [['array', 'string', 'bool', 'float', 'int'], 'color: #4796B8'],
-				square: [['{', '}'], 'color: red'],
-				spec_var: [['NULL', 'true', 'false'], 'color: blue'],
-				so: [['=>'], 'color: #A5A5A5']
-			  }
-	    text = this.text
-				 .replace(/=>((\s)+)/gm, ' => ')
-				 .split(/(array|bool|string|int|float|{|}|=>|NULL|true|false)/)
-				 .forEach(function(el){
-				 
-					if(/^\s*$/.test(el)){
-						logtext += el;							
-						return;
-					}											
-						
-					for(var x in patt){
-						if(!!~patt[x][0].indexOf(el)){							
-							logtext += '%c'+el;
-							log.push(patt[x][1]);						
+	Debug.prototype.logging = function(){
+		if(!this.log) return this;		
+		var log = [],
+			logtext = '',
+			patt = {
+					type: [['array', 'string', 'bool', 'float', 'int'], 'color: #4796B8'],
+					square: [['{', '}'], 'color: red'],
+					spec_var: [['NULL', 'true', 'false'], 'color: blue'],
+					so: [['=>'], 'color: #A5A5A5']
+				  }
+			window.dtext = this.text;
+			text = this.text
+					 .replace(/=>((\s)+)/gm, ' => ')
+					 .split(/(array|bool|string|int|float|{|}|=>|NULL|true|false)/)
+					 .forEach(function(el){
+					 
+						if(/^\s*$/.test(el)){
+							logtext += el;							
 							return;
-						}						
-					}
-					
-					logtext += '%c' + el;
-					log.push('color:#222');						
-					
-				 });				
-				 
-		log.unshift(logtext);
-		
-		console.log.apply(console, log);
-		
-		return this;
+						}											
+							
+						for(var x in patt){
+							if(~patt[x][0].indexOf(el)){							
+								logtext += '%c'+el;
+								log.push(patt[x][1]);						
+								return;
+							}						
+						}
+						
+						logtext += '%c' + el;
+						log.push('color:#222');						
+						
+					 });				
+					 
+			log.unshift(logtext);
+			
+			console.log.apply(console, log);
+			
+			return this;
 	};
 	
 	// filter
@@ -154,7 +171,7 @@
 	
 	Debug.prototype.display = function(){
 		
-		var style = document.createElement('style');
+		var style = this.doc.createElement('style');
 			css = "";
 			
 		css += ".de-box{display: block !important; position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;margin: 0px;overflow-x: auto;overflow-y: auto; background: #FFF;}";
@@ -168,22 +185,24 @@
 		css += ".de-inner{display: inline-table; color: red;}";		
 		css += ".de-null{color: #7100FF;}";		
 		css += ".de-hover.de-inner{position: relative;}";
-		css += ".de-inner.de-hover:after{position: absolute;top: 3px;left: 10px;height:  20px;width: 300px;background: transparent;content: '';}";
+		css += ".de-inner.de-hover:after{position: absolute;top: -6px;left: 10px;height: 30px;width: 300px;background: transparent;content: '';}";
 		css += ".de-child:after{position: absolute;top: -14px;left: 8px;content: '';width: 0px;height: 0px;border-top: 7px solid transparent;border-left: 7px solid transparent;border-right: 7px solid transparent;border-bottom: 7px solid white;z-index: 10;}";
 		css += ".de-child:before{position: absolute;top: -16px;left: 7px;content: '';width: 0px;height: 0px;border-top: 8px solid transparent;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 8px solid #DFDFDF;z-index: 9;}";
 		
-		css += ".de-hover.de-inner:hover > .de-child{position: absolute;top: 23px;left: 10px;background: #FFF; padding: 3px;border: 1px solid rgb(223, 223, 223);display: block !important; z-index:1;}";
+		css += ".de-hover.de-inner:hover > .de-child{position: absolute;top: 23px;left: 10px;background: #FFF; padding: 3px; box-shadow: 1px 3px 9px -3px rgba(0, 0, 0, 0.2); border: 1px solid rgb(223, 223, 223);display: block !important; z-index:1;}";
 		// add boxx
 		this.elem.classList.add('de-box');		
 		
-		style.appendChild(document.createTextNode(css));
+		style.appendChild(this.doc.createTextNode(css));
 		
-		document.body.removeChild(de);
-		document.head.appendChild(style);		
-		document.body.appendChild(this.elem);		
+		this.doc.body.removeChild(de);
+		this.doc.head.appendChild(style);		
+		this.doc.body.appendChild(this.elem);		
 		
 	};
 	
+	console.time('start');
 	new Debug(de).display();
+	console.timeEnd('start');
 	
 }())

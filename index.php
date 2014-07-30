@@ -1,30 +1,10 @@
 <?php
 
 include 'debug.php';
-	
-	class A
-	{
-		public $var1;
-		public $var2;
 
-		public static function __set_state($an_array)
-		{
-			$obj = new A;
-			$obj->var1 = $an_array['var1'];
-			$obj->var2 = $an_array['var2'];
-			return $obj;
-		}
-		
-		public function doExecute(){
-			return $this->$var1;
-		}
-	}
-
-	$a = new A;
-	$a->var1 = 5;
-	$a->var2 = 'foo';
+	// debug('SELECT ag.name AS agent, `d.date`, d.first_payment_date, d.account_number, d.id as disbursement_id, d.amount as loan_amount, d.late_fee, b.id as bid, b.name as borrower, tf.name as payment_frequency, ap.id as application_id');
 	
-	debug($b, $a, '1', pow(9999, 1000), '3', 5, true, false, array(
+	debug($b, '1', pow(9999, 1000), '3', 5, true, false, array(
 		'name' => 'Nguyễn Hữu Đại',
 		'age' => 45,
 		'level' => array(

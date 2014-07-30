@@ -1,11 +1,12 @@
 <?php
-
-	function debug(){								
-		$arg = func_get_args();		
-		$debug = uniqid();
+	
+	function debug(){
+		$arg = func_get_args();				
+		$debug = uniqid();			
+		
 		echo '<meta charset="utf8">';		
 		echo '<pre id="'. $debug .'" style="display: none;">';				
-		var_dump($arg);
+		(count($arg) == 1 ? print_r(array_pop($arg))  : var_dump($arg));
 		echo '</pre>';
 		echo "<script >var de = document.getElementById('$debug'), elapsed_time = 111;</script>";
 		echo "<script src='debugmode.js'></script>";
